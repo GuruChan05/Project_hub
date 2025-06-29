@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - ProjectHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: #f5f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Login container */
+    .login-box {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    /* Input fields */
+    .input-box {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    .input-box label {
+      position: absolute;
+      left: 2.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+      pointer-events: none;
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+    }
+
+    .input-box input:focus + label,
+    .input-box input:not(:placeholder-shown) + label {
+      top: -10px;
+      left: 10px;
+      font-size: 0.75rem;
+      background: white;
+      padding: 0 5px;
+      color: #007bff;
+    }
+
+    /* Icon inside input */
+    .input-box .icon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      color: #007bff;
+      font-size: 1.2rem;
+    }
+
+    /* Remember and forgot password */
+    .remember-forget {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+      color: #555;
+    }
+
+    .remember-forget a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .remember-forget a:hover {
+      text-decoration: underline;
+    }
+
+    /* Submit button */
+    button[type="submit"] {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    /* Register link */
+    .register-link {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .register-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="login-box">
+      <form id="loginForm">
+        <h2>Login</h2>
+        <div class="input-box">
+          <span class="icon"><ion-icon name="mail"></ion-icon></span>
+          <input type="email" id="loginEmail" required />
+          <label>Email</label>
+        </div>
+        <div class="input-box">
+          <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+          <input type="password" id="loginPassword" required />
+          <label>Password</label>
+        </div>
+        <div class="remember-forget">
+          <label><input type="checkbox"> Remember Me</label>
+          <a href="#">Forget Password</a>
+        </div>
+        <button type="submit">Login</button>
+        <div class="register-link">
+          <p>Don't have an account? <a href="signup.html">Register</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      const user = JSON.parse(localStorage.getItem("projecthub_user"));
+
+      if (user && user.email === email && user.password === password) {
+        alert("Login successful!");
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid email or password");
+      }
+    });
+  </script>
+</body>
+</html>

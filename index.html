@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ProjectHub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ProjectHub</h1>
+    <p>Showcase Your Projects Beautifully</p>
+    <nav>
+      <a href="index.html">Home</a>
+       <a href="login.html">Login</a> <!-- This line links to the login page -->
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>About Me</h2>
+    <p>Hello! I'm a passionate developer showcasing my favorite projects. I love building things with web tech, AI, and apps. Explore my work below!</p>
+  </section>
+     
+  <!-- Filter Buttons -->
+    <section class="filter-buttons">
+    <button onclick="filterProjects('all')">All</button>
+    <button onclick="filterProjects('web')">Web</button>
+    <button onclick="filterProjects('app')">App</button>
+    <button onclick="filterProjects('ai')">AI</button>
+  </section>
+
+  <!-- Project Grid -->
+  <section class="project-grid" id="projectGrid">
+
+    <!-- Weather App -->
+    <a href="weather-app.html" class="project-card" data-category="web HTML JavaScript">
+  <img src="weather.png" alt="Weather App" />
+  <div>
+    <h3>Weather App</h3>
+    <div class="tags">
+      <span>HTML</span><span>CSS</span><span>JavaScript</span><span>API</span>
+      </div>
+     </div>
+     </a>
+
+
+    <!-- To-do List App -->
+    <a href="do-app.html" class="project-card" data-category="web HTML JavaScript">
+      <img src="do list.png" alt="To-do List App">
+      <div>
+      <h3>To-do List App</h3>
+      <div class="tags">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+      </div>
+      </div>
+    </a>
+
+    <!-- Calculator -->
+    <a href="calculator.html" class="project-card" data-category="web HTML JavaScript">
+      <img src="calculator.png" alt="Calculator">
+       <div>
+      <h3>Calculator</h3>
+      <div class="tags">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+      </div>
+      </div>
+    </a>
+
+    <!-- Portfolio Website -->
+    <a href="portfolio.html" class="project-card" data-category="web HTML CSS">
+      <img src="portfolio.png" alt="Portfolio Website">
+      <div>
+      <h3>Portfolio Website</h3>
+      <div class="tags">
+        <span>HTML</span><span>CSS</span><span>Responsive</span>
+      </div>
+       </div>
+    </a>
+
+    <!-- AI Chatbot -->
+    <a href="chatbot.html" class="project-card" data-category="ai JavaScript">
+      <img src="chatbot.png" alt="AI Chatbot">
+      <div>
+      <h3>AI Chatbot</h3>
+      <div class="tags">
+        <span>JavaScript</span><span>AI</span>
+      </div>
+       </div>
+    </a>
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ProjectHub</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Floating Call Button -->
+<a href="tel:+97826060700" class="call-button" title="Call Now">
+  <ion-icon name="call-outline"></ion-icon>
+</a>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+  const toggle = document.getElementById("themeToggle");
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    // Save preference in localStorage
+    const isDark = document.body.classList.contains("dark-mode");
+    localStorage.setItem("preferredTheme", isDark ? "dark" : "light");
+  });
+
+  // Load saved preference on page load
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("preferredTheme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  });
+</script>
+</body>
+</html>
